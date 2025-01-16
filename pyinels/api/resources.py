@@ -14,6 +14,12 @@ from pyinels.const import (
     ATTR_TITLE,
     ATTR_TYPE,
     ATTR_UP,
+    ATTR_MIN_DISP,
+    ATTR_MAX_DISP,
+    ATTR_MULTIPLICATOR,
+    ATTR_DECIMAL_DIGITS,
+    ATTR_ADDITION,
+    ATTR_UNITS,
     INELS_BUS_ATTR_DICT
 )
 
@@ -152,3 +158,46 @@ class ApiResource:
             value = self.get_value()
         # when the result is None then the device is not available
         return False if value[self.id] is None else True
+
+    @property
+    def min_display_value(self):
+        """Minimal display value of the object."""
+        if INELS_BUS_ATTR_DICT.get(ATTR_MIN_DISP) not in self.__json:
+            return None
+        return float(self.__json[INELS_BUS_ATTR_DICT.get(ATTR_MIN_DISP)])
+
+    @property
+    def max_display_value(self):
+        """Maximal display value of the object."""
+        if INELS_BUS_ATTR_DICT.get(ATTR_MAX_DISP) not in self.__json:
+            return None
+        return float(self.__json[INELS_BUS_ATTR_DICT.get(ATTR_MAX_DISP)])
+
+    @property
+    def multiplicator(self):
+        """Multiplication coefficient for the value of the object."""
+        if INELS_BUS_ATTR_DICT.get(ATTR_MULTIPLICATOR) not in self.__json:
+            return None
+        return float(self.__json[INELS_BUS_ATTR_DICT.get(ATTR_MULTIPLICATOR)])
+
+    @property
+    def decimal_digits(self):
+        """Decimal digits of value of the object."""
+        if INELS_BUS_ATTR_DICT.get(ATTR_DECIMAL_DIGITS) not in self.__json:
+            return None
+        return int(self.__json[INELS_BUS_ATTR_DICT.get(ATTR_DECIMAL_DIGITS)])
+
+    @property
+    def addition(self):
+        """Addition coefficient for the value of the object."""
+        if INELS_BUS_ATTR_DICT.get(ATTR_ADDITION) not in self.__json:
+            return None
+        return float(self.__json[INELS_BUS_ATTR_DICT.get(ATTR_ADDITION)])
+
+    @property
+    def units(self):
+        """Units of the value of the object."""
+        if INELS_BUS_ATTR_DICT.get(ATTR_UNITS) not in self.__json:
+            return None
+
+        return self.__json[INELS_BUS_ATTR_DICT.get(ATTR_UNITS)]

@@ -176,6 +176,44 @@ name="VZT ST 2" column="1" inels="VZT_rychlost_2" read_only="no" row="0"
 name="VZT ST 3" column="2" inels="VZT_Rychlost_3" read_only="no" row="0"
 """
 
+TEST_RAW_AIRING = """airing:
+name="Equipment_room" column="0" inels="RE12_VT_equipment_room" \
+read_only="no" row="1"
+name="Pivnica 1" column="3" inels="RE10_VT_pivnica" read_only="no" row="1"
+"""
+
+TEST_RAW_METER = """meter:
+name="Humidity cellar" inels="Humidity_cellar" min_disp="0" column="1" \
+koef_mult="1.0" max_disp="100" decimal_digits="1" koef_add="0.0" \
+units="%" row="1"
+name="Teplota pivnica" inels="Therm_pivnica" min_disp="0" column="2" \
+koef_mult="1.0" max_disp="100" decimal_digits="1" koef_add="0.0" \
+units="stu" row="1"
+"""
+
+TEST_RAW_HC4 = """
+hc4:
+name="Kupelna_spalna" read_only="no" \
+control_in="Controller_Control-IN_015AFA" \
+required_therm_aout="Controller_Required-Therm-AOUT_015AFA" \
+column="1" \
+manual_cool_therm_ain="Controller_Manual-Cool-Therm-AIN_015AFA" \
+status_dout="Controller_Status-DOUT_015AFA" \
+manual_therm_ain="Controller_Manual-Therm-AIN_015AFA" \
+actual_therm_aout="Controller_Actual-Therm-AOUT_015AFA" \
+control_type_aout="Controller_Control-Type-AOUT_015AFA" \
+required_heat_dout="Controller_Required-Heat-DOUT_015AFA" \
+controller="kup_spal" \
+control_manual_in="Controller_Control-Manual-IN_015AFA" \
+control_hc_in="Controller_Control-HC-IN_015AFA" \
+mode_dout="Controller_Mode-DOUT_015AFA" \
+rele_c="Chod2" \
+required_cool_therm_aout="Controller_Required-Cool-Therm-AOUT_015AFA" \
+required_cool_dout="Controller_Required-Cool-DOUT_015AFA" \
+rele_h="RE2_kur_kupelna_spalna" \
+control_plan_in="Controller_Control-Plan-IN_015AFA" \
+row="1"
+"""
 
 TEST_ROOMS = ['Basement', 'First floor', 'Front yard',
               'Back yard', 'Attic', 'Garrage']

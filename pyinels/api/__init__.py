@@ -15,6 +15,7 @@ from pyinels.const import (
     ATTR_TITLE,
     ATTR_TYPE,
     ATTR_UP,
+    ATTR_SCENE,
     DEVICE_TYPE_DICT,
     INELS_BUS_ATTR_DICT
 )
@@ -199,8 +200,7 @@ class Api:
 
                     obj = self.__recognizeAndSetUniqueIdToDevice(obj)
 
-                    if(obj['ty[e'] != 'unknown'):
-                    
+                    if (obj['type'] != 'unknown'):
                         device = Device(obj, self)
                         device.get_value()
 
@@ -235,13 +235,21 @@ class Api:
 
             return dev
 
+        def set_scene_id(dev):
+            """Set the id to the not know device from name."""
+            name = dev[INELS_BUS_ATTR_DICT.get(ATTR_TITLE)].replace(" ", "_")
+            dev[INELS_BUS_ATTR_DICT.get(ATTR_ID)] = name
+
+            return dev
+
         # use a switch to create identifier inside of the raw data
         # from usefull attributes
         if INELS_BUS_ATTR_DICT.get(ATTR_ID) not in raw_device:
             switcher = {
                 ATTR_SHUTTER: partial(set_shutter_id, raw_device),
                 ATTR_THERM: partial(set_therm_id, raw_device),
-                ATTR_UNKNOWN: partial(set_not_known_id_from_name, raw_device)
+                ATTR_UNKNOWN: partial(set_not_known_id_from_name, raw_device),
+                ATTR_SCENE: partial(set_scene_id, raw_device)
             }
 
             fnc = switcher.get(raw_device[INELS_BUS_ATTR_DICT.get(ATTR_TYPE)])

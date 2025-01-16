@@ -14,6 +14,12 @@ ATTR_TITLE = "Title"
 ATTR_TYPE = "Type"
 ATTR_UP = "Up"
 ATTR_STOP = "Stop"
+ATTR_MIN_DISP = "Min_disp"
+ATTR_MAX_DISP = "Max_disp"
+ATTR_MULTIPLICATOR = "Koef_mult"
+ATTR_DECIMAL_DIGITS = "Decimal_digits"
+ATTR_ADDITION = "Koef_add"
+ATTR_UNITS = "Units"
 
 # Internal device attributes
 ATTR_SWITCH = "switch"
@@ -22,6 +28,9 @@ ATTR_DOOR = "door"
 ATTR_SHUTTER = "shutter"
 ATTR_HEATING = "heating"
 ATTR_THERM = "therm"
+ATTR_METER = "meter"
+ATTR_AIRING = "airing"
+ATTR_SCENE = "scenes"
 ATTR_UNKNOWN = "unknown"
 
 # Device types dictionary with all determined typs translated to better
@@ -33,8 +42,13 @@ DEVICE_TYPE_DICT = {
     "shutters": "shutter",
     "heat-control": "therm",
     "heating": "heating",
+    "thermals": "thermals",
+    "scenes": "scenes",
     "garage": "door",
-    "gate": "door"
+    "gate": "door",
+    "airing": "airing",
+    "meter": "meter",
+    "hc4": "unknown"
 }
 
 INELS_BUS_ATTR_DICT = {
@@ -48,12 +62,23 @@ INELS_BUS_ATTR_DICT = {
     "Up": "up",
     "Read_only": "read_only",
     "Group": "group",
+    "Min_disp": "min_disp",
+    "Max_disp": "max_disp",
+    "Koef_mult": "koef_mult",
+    "Decimal_digits": "decimal_digits",
+    "Koef_add": "koef_add",
+    "Units": "units",
 }
 
 DIRECTIONS_DICT = {
     "Up": "up",
     "Dwon": "down",
     "Stop": "stop"
+}
+
+UNITS_DICT = {
+    "%": "Percentage",
+    "stu": "Degree",
 }
 
 NAME = "pyinels"
@@ -80,4 +105,6 @@ STATE_OPENING = "opening"
 STATE_CLOSED = "closed"
 STATE_CLOSING = "closing"
 
-VERSION = "0.6.12"
+VERSION = "0.6.13"
+
+ERROR_VALUE = -1
